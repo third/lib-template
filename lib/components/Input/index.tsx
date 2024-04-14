@@ -1,3 +1,11 @@
+import styles from './styles.module.css';
+
 export function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
-    return <input {...props} />;
+    const { className, ...restProps } = props;
+    return (
+        <input
+            className={`${className} ${styles.button}`}
+            {...restProps}
+        />
+    );
 }
