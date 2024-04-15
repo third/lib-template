@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import { Suspense, lazy } from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+
+const { pathname } = window.location;
+
+const path = pathname !== '/' ? `./demoApps${pathname}` : '.';
+const App = lazy(() => import(`${path}/App.tsx`));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <Suspense fallback={<div>Loading...</div>}>
+        <App />
+    </Suspense>
+);
