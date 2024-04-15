@@ -5,7 +5,7 @@ import './index.css';
 const { pathname } = window.location;
 
 const path = pathname !== '/' ? `./demoApps${pathname}` : '.';
-const App = lazy(() => import(`${path}/App.tsx`));
+const App = lazy(() => import(/* @vite-ignore */ `${path}/App.tsx`));
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <Suspense fallback={<div>Loading...</div>}>
